@@ -13,5 +13,5 @@ $openstack = new OpenStack\OpenStack([
 
 $openstack->imagesV2()
     ->getImage('{imageId}')
-    ->getMember('{projectId}')
+    ->getMember('{tenantId}')
     ->updateStatus(Member::STATUS_ACCEPTED);
