@@ -10,12 +10,7 @@ cache:
 
 matrix:
   include:
-    - php: 7.2
-    - php: 7.3
     - php: 7.4
-    - php: nightly
-  allow_failures:
-    - php: nightly
   fast_finish: true
 
 before_install:
@@ -36,6 +31,3 @@ after_script:
 after_success:
   - travis_retry php vendor/bin/php-coveralls -v
 
-notifications:
-  email:
-    - thanhha.work@gmail.com
