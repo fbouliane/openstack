@@ -11,6 +11,8 @@ Content-Type: application/json
         "tenant_id": "openstack",
         "admin_state_up": true,
         "shared": true,
-        "id": "networkId"
+        "id": "networkId",
+        "provider:network_type": "vlan",
+        "provider:segmentation_id": 1002
     }
 }

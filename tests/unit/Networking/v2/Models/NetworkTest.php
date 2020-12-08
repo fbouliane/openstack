@@ -105,6 +105,8 @@ class NetworkTest extends TestCase
         $this->assertEquals('networkId', $this->network->id);
         $this->assertEquals('fakenetwork', $this->network->name);
         $this->assertEquals('ACTIVE', $this->network->status);
+        $this->assertEquals('vlan', $this->network->networkType);
+        $this->assertEquals(1002, $this->network->segmentationId);
     }
 
     public function test_it_deletes()
