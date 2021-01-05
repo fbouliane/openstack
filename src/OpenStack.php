@@ -189,4 +189,16 @@ class OpenStack
 
         return $this->builder->createService('Metric\\v1\\Gnocchi', array_merge($defaults, $options));
     }
+
+    /**
+     * Creates a new Baremetal v1 service.
+     *
+     * @param array $options options that will be used in configuring the service
+     */
+    public function baremetalV1(array $options = []): Baremetal\v1\Service
+    {
+        $defaults = ['catalogName' => 'ironic', 'catalogType' => 'baremetal'];
+
+        return $this->builder->createService('Baremetal\\v1', array_merge($defaults, $options));
+    }
 }
