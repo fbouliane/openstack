@@ -78,6 +78,16 @@ class Params extends AbstractParams
         ];
     }
 
+    public function queryNetworkId(): array
+    {
+        return [
+            'type'        => self::STRING_TYPE,
+            'location'    => self::QUERY,
+            'sentAs'      => 'network_id',
+            'description' => 'The ID of the attached network',
+        ];
+    }
+
     public function ipVersion(): array
     {
         return [
@@ -460,6 +470,26 @@ class Params extends AbstractParams
             'location'    => self::JSON,
             'sentAs'      => $sentAs,
             'description' => $description,
+        ];
+    }
+
+    public function queryNetworkType(): array
+    {
+        return [
+            'type'        => self::STRING_TYPE,
+            'location'    => self::QUERY,
+            'sentAs'      => 'provider:network_type',
+            'description' => 'Filter the list result by the type of physical network that this network/segment is mapped to. For example, flat, vlan, vxlan, or gre. Valid values depend on a networking back-end.',
+        ];
+    }
+
+    public function querySegmentationId(): array
+    {
+        return [
+            'type'        => self::INT_TYPE,
+            'location'    => self::QUERY,
+            'sentAs'      => 'provider:segmentation_id',
+            'description' => 'Filter the list result by the ID of the isolated segment on the physical network.',
         ];
     }
 

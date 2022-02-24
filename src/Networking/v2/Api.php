@@ -39,6 +39,8 @@ class Api extends AbstractApi
                 'tenantId'       => $this->params->queryTenantId(),
                 'status'         => $this->params->queryStatus(),
                 'routerExternal' => $this->params->queryRouterExternal(),
+                'segmentationId' => $this->params->querySegmentationId(),
+                'networkType'    => $this->params->queryNetworkType(),
             ],
         ];
     }
@@ -201,7 +203,7 @@ class Api extends AbstractApi
                 'status'         => $this->params->statusQuery(),
                 'displayName'    => $this->params->displayNameQuery(),
                 'adminState'     => $this->params->adminStateQuery(),
-                'networkId'      => $this->notRequired($this->params->networkId()),
+                'networkId'      => $this->params->queryNetworkId(),
                 'tenantId'       => $this->params->tenantIdQuery(),
                 'deviceOwner'    => $this->params->deviceOwnerQuery(),
                 'macAddress'     => $this->params->macAddrQuery(),
