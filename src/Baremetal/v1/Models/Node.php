@@ -74,6 +74,35 @@ class Node extends OperatorResource implements Creatable, Listable, Retrievable,
         return $this->populateFromResponse($response);
     }
 
+    public function update(array $data)
+    {
+        // retrieve latest state so we can accurately produce a diff
+        $this->retrieve();
+
+        // formulate diff
+        $patch = [];
+        foreach ($data as $path => $value) {
+            // todo: not the best way to do it, no validation (see v2/Image.php::update)
+            // will not work if the path handle array
+            $patch[] = [
+                'op'    => 'add',
+                'path'  => "/$path",
+                'value' => $value,
+            ];
+        }
+
+        $json  = json_encode($patch, JSON_UNESCAPED_SLASHES);
+
+        // execute patch operation
+        $response = $this->execute($this->api->patchNode(), [
+            'id'          => $this->uuid,
+            'patchDoc'    => $json,
+            'contentType' => 'application/json',
+        ]);
+
+        $this->populateFromResponse($response);
+    }
+
     /**
      * {@inheritdoc}
      */

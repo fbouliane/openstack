@@ -62,4 +62,17 @@ class Api extends AbstractApi
             'params' => ['uuid' => $this->params->urlUuid('node')],
         ];
     }
+
+    public function patchNode(): array
+    {
+        return [
+            'method' => 'PATCH',
+            'path'   => $this->pathPrefix.'/nodes/{id}',
+            'params' => [
+                'id'          => $this->params->urlUuid('node'),
+                'patchDoc'    => $this->params->patchDoc(),
+                'contentType' => $this->params->contentType(),
+            ],
+        ];
+    }
 }

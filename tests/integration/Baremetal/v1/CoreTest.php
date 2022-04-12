@@ -48,6 +48,7 @@ class CoreTest extends TestCase
 
         try {
             $this->retrieveNode();
+            $this->patchNode();
         } finally {
             // Teardown
             $this->deleteNode();
@@ -64,7 +65,7 @@ class CoreTest extends TestCase
             '{uuid}'   => $this->randomStr(32),
         ];
 
-        /** @var $node \OpenStack\Baremetal\v1\Models\Node */
+        /** @var $node Node */
         $path = $this->sampleFile($replacements, 'servers/create_node.php');
         require_once $path;
 
@@ -82,7 +83,7 @@ class CoreTest extends TestCase
     {
         $replacements = ['{uuid}' => $this->nodeUuid];
 
-        /** @var $node \OpenStack\Baremetal\v1\Models\Node */
+        /** @var $node Node */
         $path = $this->sampleFile($replacements, 'servers/get_node.php');
         require_once $path;
 
@@ -98,10 +99,21 @@ class CoreTest extends TestCase
     {
         $replacements = ['{uuid}' => $this->nodeUuid];
 
-        /** @var $node \OpenStack\Baremetal\v1\Models\Node */
+        /** @var $node Node */
         $path = $this->sampleFile($replacements, 'servers/delete_node.php');
         require_once $path;
 
         $this->logStep('Deleted Node UUID', ['UUID' => $this->nodeUuid]);
+    }
+
+    private function patchNode()
+    {
+        $replacements = ['{uuid}' => $this->nodeUuid];
+
+        /** @var $node Node */
+        $path = $this->sampleFile($replacements, 'nodes/update_node.php');
+        require_once $path;
+
+        $this->logStep('Updated Node UUID', ['UUID' => $this->nodeUuid]);
     }
 }
