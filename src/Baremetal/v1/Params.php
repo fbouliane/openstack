@@ -17,6 +17,25 @@ class Params extends AbstractParams
         ]);
     }
 
+    public function patchDoc(): array
+    {
+        return [
+            'location'   => self::RAW,
+            'type'       => self::STRING_TYPE,
+            'required'   => true,
+            'documented' => false,
+        ];
+    }
+
+    public function contentType(): array
+    {
+        return [
+            'location' => self::HEADER,
+            'type'     => self::STRING_TYPE,
+            'sentAs'   => 'Content-Type',
+        ];
+    }
+
     public function driverInfo(string $type): array
     {
         return [
