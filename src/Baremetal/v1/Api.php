@@ -26,6 +26,7 @@ class Api extends AbstractApi
             'method'  => 'GET',
             'path'    => $this->pathPrefix.'/nodes',
             'params'  => [],
+            'microversion' => $this->params->microversion()
         ];
     }
 

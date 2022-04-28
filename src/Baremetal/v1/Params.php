@@ -36,6 +36,15 @@ class Params extends AbstractParams
         ];
     }
 
+    public function microversion(): array
+    {
+        return [
+            'location' => self::HEADER,
+            'type'     => self::STRING_TYPE,
+            'sentAs'   => 'X-OpenStack-Ironic-API-Version',
+        ];
+    }
+
     public function driverInfo(string $type): array
     {
         return [

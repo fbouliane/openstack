@@ -58,7 +58,7 @@ class Node extends OperatorResource implements Creatable, Listable, Retrievable,
      */
     public function retrieve()
     {
-        $response = $this->execute($this->api->getNode(), $this->getAttrs(['uuid']));
+        $response = $this->execute($this->api->getNode(), array_merge($this->getAttrs(['uuid']), ['microversion'=>'1.16']));
         $this->populateFromResponse($response);
     }
 
